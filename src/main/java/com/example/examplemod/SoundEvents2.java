@@ -1,6 +1,6 @@
 package com.example.examplemod;
 
-import com.dabigjoe.obsidianOverhaul.ObsidianOverhaul;
+import com.example.examplemod.proxy.NMFC;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -47,7 +47,7 @@ public class SoundEvents2
      */
     private static SoundEvent registerSound(String soundName)
     {
-        final ResourceLocation soundID = new ResourceLocation(ObsidianOverhaul.MODID, soundName);
+        final ResourceLocation soundID = new ResourceLocation(NMFC.MODID, soundName);
         return SoundEventRegister.register(new SoundEvent(soundID).setRegistryName(soundID));
     }
 }

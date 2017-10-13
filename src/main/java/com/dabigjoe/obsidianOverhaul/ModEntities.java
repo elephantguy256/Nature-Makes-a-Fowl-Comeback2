@@ -1,33 +1,27 @@
 package com.dabigjoe.obsidianOverhaul;
 
-import java.util.Random;
-
-import com.example.examplemod.EntityChinchilla;
 import com.example.examplemod.EntityGuineaPig;
-import com.example.examplemod.EntityRingTailedLemur;
+import com.example.examplemod.proxy.NMFC;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ModEntities 
-{
-	
-	private static int id = 1;
+public class ModEntities {
 
-	public static void registerEntities()
-	{
-		registerEntity(EntityChinchilla.class, "Chinchilla");
-		registerEntity(EntityGuineaPig.class, "Guinea Pig");
-		registerEntity(EntityRingTailedLemur.class, "Ring Tailed Lemur");
-	}
+    public static void init() {
+        // Every entity in our mod has an ID (local to this mod)
+        int id = 1;
+        EntityRegistry.registerModEntity(new ResourceLocation(NMFC.MODID, "de1"),EntityGuineaPig.class, "Safari Jeep", id++, NMFC.instance, 64, 3, true, 0x996600, 0x00ff00);	
 
-	public static void registerEntity(Class entityClass, String name)
-	{
-		long seed = name.hashCode();
-		Random rand = new Random(seed);
-		int primaryColor = rand.nextInt() * 16777215;
-		int secondaryColor = rand.nextInt() * 16777215;
-        EntityRegistry.registerModEntity(new ResourceLocation(ObsidianOverhaul.MODID, name), entityClass, name, id++, ObsidianOverhaul.instance, 64, 3, true, primaryColor, secondaryColor);
-	}
+        // We want our mob to spawn in Plains and ice plains biomes. If you don't add this then it will not spawn automatically
+        // but you can of course still make it spawn manually
 
+        // This is the loot table for our mob
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static void initModels() {
+    }
 }
